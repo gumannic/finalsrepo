@@ -1,9 +1,23 @@
 <script>
-    let { data } = $props();
+  import LeagueCard from "$lib/LeagueCard.svelte";
+
+  let { data } = $props();
 </script>
 
-<ul>
+<h1 class="text-2xl font-bold mb-4 center-text">Football Leagues</h1>
+
+<div class="container">
+  <div class="row">
     {#each data.leagues as league}
-        <li>{league.league_name}</li>
+      <div class="col-md-4 mb-4">
+        <LeagueCard {league} />
+      </div>
     {/each}
-</ul>
+  </div>
+</div>
+
+<style>
+  .center-text {
+    text-align: center;
+  }
+</style>

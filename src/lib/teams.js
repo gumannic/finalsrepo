@@ -22,8 +22,8 @@ async function getTeams() {
 
     // Get all objects that match the query
     teams = await collection.find(query).toArray();
-    teams.forEach((movie) => {
-      teams._id = teams._id.toString(); // convert ObjectId to String
+    teams.forEach((team) => {
+      team._id = team._id.toString(); // convert ObjectId to String
     });
   } catch (error) {
     console.log(error);
