@@ -50,6 +50,24 @@ async function getLeague(id) {
   return league;
 }
 
+async function getLeagueByName(name) {
+  let league = null;
+  try {
+    const collection = db.collection("leagues");
+    const query = { league_name: name }; // filter by id
+    league = await collection.findOne(query);
+
+    if (!league) {
+      console.log("No league with name " + name);
+    } else {
+      league._id = league._id.toString(); // convert ObjectId to String
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+  return league;
+}
+
 // create league
 // Example league object:
 /* 
@@ -129,6 +147,7 @@ async function deleteLeague(id) {
 export default {
   getLeagues,
   getLeague,
+  getLeagueByName,
   createLeague,
   updateLeague,
   deleteLeague,

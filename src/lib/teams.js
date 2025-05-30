@@ -50,6 +50,25 @@ async function getTeam(id) {
   return team;
 }
 
+async function getTeamByName(name) {
+  console.log(name)
+  let team = null;
+  try {
+    const collection = db.collection("teams");
+    const query = { team_name: name }; // filter by name
+    team = await collection.findOne(query);
+
+    if (!team) {
+      console.log("No Team with name " + name);
+    } else {
+      team._id = team._id.toString(); // convert ObjectId to String
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+  return team;
+}
+
 // create team
 // Example team object:
 /* 
@@ -129,6 +148,7 @@ async function deleteTeam(id) {
 export default {
   getTeams,
   getTeam,
+  getTeamByName,
   createTeam,
   updateTeam,
   deleteTeam,
