@@ -13,9 +13,11 @@
 
   <h1>{team.team_name}</h1>
   <strong>Players: </strong>
+  <br>
+  <br>
   <div class="row">
     {#each players as player}
-      <div class="col-md-4 mb-4">
+      <div class="col-md-2 mb-2">
         <PlayerCard {player} />
       </div>
     {/each}
