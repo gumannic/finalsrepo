@@ -56,13 +56,24 @@
   </div>
 
   {#if targetPlayer}
-    <div class="mt-4 p-3 border rounded">
-      <p>
+    <div
+      class="mt-4 p-3 border rounded d-flex justify-content-between align-items-center gap-3 flex-wrap"
+    >
+      <p class="mb-1">
         <strong>Name:</strong>
         {targetPlayer.first_name}
         {targetPlayer.last_name}
       </p>
-      <p><strong>Value:</strong> {targetPlayer.releaseClause} Mio.</p>
+      <p class="mb-0">
+        <strong>Value:</strong>
+        {targetPlayer.releaseClause} Mio.
+      </p>
+      <img
+        class="rounded"
+        style="width: 100px; height: auto;"
+        src={`/${targetPlayer.pic}`}
+        alt={targetPlayer.last_name}
+      />
     </div>
   {/if}
 
@@ -100,18 +111,30 @@
   </div>
 
   {#if exchangePlayer}
-    <div class="mt-4 p-3 border rounded">
-      <p>
+    <div
+      class="mt-4 p-3 border rounded d-flex justify-content-between align-items-center gap-3 flex-wrap"
+    >
+      <p class="mb-1">
         <strong>Name:</strong>
         {exchangePlayer.first_name}
         {exchangePlayer.last_name}
       </p>
-      <p><strong>Value:</strong> {exchangePlayer.releaseClause} Mio.</p>
+      <p class="mb-0"><strong>Value:</strong> {exchangePlayer.releaseClause} Mio.</p>
+      <img
+        class="rounded"
+        style="width: 100px; height: auto;"
+        src={`/${exchangePlayer.pic}`}
+        alt={exchangePlayer.last_name}
+      />
     </div>
   {/if}
 
   <input type="hidden" name="team" value={team.team_name} />
-  <button type="button" onclick={() => goto(`/teams/${team._id}`)} class="btn btn-secondary">
+  <button
+    type="button"
+    onclick={() => goto(`/teams/${team._id}`)}
+    class="btn btn-secondary"
+  >
     Cancel
   </button>
   <button type="submit" class="btn btn-primary">Transfer</button>

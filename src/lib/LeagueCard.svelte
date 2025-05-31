@@ -12,13 +12,6 @@
         alt={league.league_name}
       />
     </div>
-    <div class="card-body">
-      <p class="card-text">
-        Land: {league.country}<br />
-        Gründungsjahr: {league.founded_year}<br />
-        Anzahl Teams: {league.number_of_teams}
-      </p>
-    </div>
   </div>
 </a>
 

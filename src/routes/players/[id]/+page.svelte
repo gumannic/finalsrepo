@@ -1,5 +1,4 @@
 <script>
-  import PlayerCard from "$lib/PlayerCard.svelte";
   import { goto } from "$app/navigation";
 
   let { data } = $props();

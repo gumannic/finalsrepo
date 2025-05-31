@@ -1,5 +1,4 @@
 <script>
-  import PlayerCard from "$lib/PlayerCard.svelte";
   import { goto } from "$app/navigation";
 
   let { data } = $props();
@@ -9,37 +8,55 @@
 </script>
 
 <div class="container">
-  <button
-    onclick={() => goto(`/leagues/${league._id}`)}
-    class="btn btn-secondary"
-  >
-    ← Back
-  </button>
+  <div class="d-flex justify-content-between align-items-start flex-wrap">
+    <div class="mb-2">
+      <button
+        onclick={() => goto(`/leagues/${league._id}`)}
+        class="btn btn-secondary me-2"
+      >
+        ← Back
+      </button>
 
-  <button
-    onclick={() => goto(`/teams/${team._id}/createPlayer`)}
-    class="btn btn-secondary"
-  >
-    Spieler hinzufügen
-  </button>
+      <button
+        onclick={() => goto(`/teams/${team._id}/createPlayer`)}
+        class="btn btn-secondary me-2"
+      >
+        Spieler hinzufügen
+      </button>
 
-  <button
-    onclick={() => goto(`/teams/${team._id}/transfer`)}
-    class="btn btn-secondary"
-  >
-    Transfer
-  </button>
+      <button
+        onclick={() => goto(`/teams/${team._id}/transfer`)}
+        class="btn btn-secondary"
+      >
+        Transfer
+      </button>
+      <h1 class="mt-3">{team.team_name}</h1>
 
-  <h1>{team.team_name}</h1>
-  <strong>Budget: {team.budget} Mio.</strong> <br />
-  <strong>Players: </strong>
-  <br />
-  <br />
-  <div class="row">
-    {#each players as player}
-      <div class="col-md-2 mb-4">
-        <PlayerCard {player} />
-      </div>
-    {/each}
+      <strong>Liga: </strong> {team.league} <br />
+      <strong>Budget: </strong> {team.budget} Mio.  <br />
+    </div>
+    <div class="text-end">
+      <img
+        class="img-fluid mt-2"
+        style="width: 120px; height: auto;"
+        src={`/${team.logo}`}
+        alt={team.team_name}
+      />
+    </div>
   </div>
+
+  <h2 class="mt-4">Players:</h2>
+  <ul class="list-group">
+    {#each players as player}
+      <a href={`/players/${player._id}`} class="text-decoration-none text-dark">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          {player.first_name}
+          {player.last_name}
+          <span class="badge bg-primary">{player.releaseClause} Mio. €</span>
+        </li>
+      </a>
+    {/each}
+  </ul>
 </div>
