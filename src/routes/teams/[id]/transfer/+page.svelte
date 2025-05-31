@@ -1,4 +1,6 @@
 <script>
+  import { goto } from "$app/navigation";
+
   let { form, data } = $props();
   const team = data.team;
   const myPlayers = data.myPlayers;
@@ -31,7 +33,11 @@
   }
 </script>
 
-<form method="POST" class="container mt-4 p-4 border rounded bg-light" style="max-width: 600px;">
+<form
+  method="POST"
+  class="container mt-4 p-4 border rounded bg-light"
+  style="max-width: 600px;"
+>
   <div class="mb-3">
     <label class="form-label" for="player">Wunschspieler auswählen</label>
     <select
@@ -104,7 +110,9 @@
     </div>
   {/if}
 
-
   <input type="hidden" name="team" value={team.team_name} />
+  <button type="button" onclick={() => goto(`/teams/${team._id}`)} class="btn btn-secondary">
+    Cancel
+  </button>
   <button type="submit" class="btn btn-primary">Transfer</button>
 </form>

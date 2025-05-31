@@ -1,5 +1,6 @@
 <script>
   import TeamCard from "$lib/TeamCard.svelte";
+  import { goto } from "$app/navigation";
 
   let { data } = $props();
   const league = data.league;
@@ -7,7 +8,10 @@
 </script>
 
 <div class="container">
-  <button on:click={() => history.back()} class="btn btn-secondary">
+  <button
+    onclick={() => goto('/leagues')}
+    class="btn btn-secondary"
+  >
     ← Back
   </button>
   <h1>{league.league_name}</h1>

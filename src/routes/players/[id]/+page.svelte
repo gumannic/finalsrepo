@@ -1,12 +1,17 @@
 <script>
   import PlayerCard from "$lib/PlayerCard.svelte";
+  import { goto } from "$app/navigation";
 
   let { data } = $props();
   const player = data.player;
+  const team = data.team;
 </script>
 
 <div class="container">
-  <button on:click={() => history.back()} class="btn btn-secondary">
+  <button
+    onclick={() => goto(`/teams/${team._id}`)}
+    class="btn btn-secondary"
+  >
     ← Back
   </button>
 
