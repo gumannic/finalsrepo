@@ -52,7 +52,7 @@ export const actions = {
       targetTeam.player_reference.splice(targetPlayerIndex, 1);
 
       myTeam.player_reference.push(targetPlayerId);
-      targetTeam.player_reference.push(exchangePlayer);
+      targetTeam.player_reference.push(exchangePlayerId);
 
       await teams_db.updateTeam(targetTeam);
       await teams_db.updateTeam(myTeam);

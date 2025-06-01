@@ -10,7 +10,6 @@ export async function load({ params }) {
         const player = await players_db.getPlayer(id);
         players.push(player);
     }
-
     const league = await leagues_db.getLeagueByName(team.league);
     return {
         players,
